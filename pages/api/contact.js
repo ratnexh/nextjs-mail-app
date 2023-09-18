@@ -6,7 +6,7 @@ export default function (req, res) {
         port: 465,
         host: "smtp.gmail.com",
         auth: {
-            user: 'ratnesh.drupalchamp@gmail.com',
+            user: process.env.EMAIL,
             pass: process.env.password,
         },
         secure: true,

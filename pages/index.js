@@ -1,7 +1,5 @@
-import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { useState } from 'react'
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [name, setName] = useState('')
@@ -39,17 +37,18 @@ export default function Home() {
     <>
       <div className={styles.container}>
         <form className={styles.main}>
+          <h2>Contact form</h2>
           <div className={styles.inputGroup}>
             <label htmlFor='name'>Name</label>
-            <input type='text' onChange={(e) => { setName(e.target.value) }} value={name} name='name' className={styles.inputField} />
+            <input type='text' onChange={(e) => { setName(e.target.value) }} value={name} id='name' className={styles.inputField} autoComplete='true' />
           </div>
           <div className={styles.inputGroup}>
             <label htmlFor='email'>Email</label>
-            <input type='email' onChange={(e) => { setEmail(e.target.value) }} value={email} name='email' className={styles.inputField} />
+            <input type='email' onChange={(e) => { setEmail(e.target.value) }} value={email} id='email' className={styles.inputField} autoComplete='true' />
           </div>
           <div className={styles.inputGroup}>
             <label htmlFor='message'>Message</label>
-            <input type='text' onChange={(e) => { setMessage(e.target.value) }} value={message} name='message' className={styles.inputField} />
+            <input type='text' onChange={(e) => { setMessage(e.target.value) }} value={message} id='message' className={styles.inputField} autoComplete='true' />
           </div>
           <input type='submit' onClick={(e) => { handleSubmit(e) }} />
         </form>
