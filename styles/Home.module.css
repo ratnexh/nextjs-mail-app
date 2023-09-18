@@ -1,0 +1,18 @@
+.main {
+  max-width: 50%;
+  margin: auto;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.inputLabel {
+  text-align: left;
+}
+
+.inputField {
+  height: 30px;
+}
