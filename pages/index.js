@@ -1,5 +1,6 @@
 import styles from '@/styles/Home.module.css'
 import { useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Home() {
   const [name, setName] = useState('')
@@ -8,6 +9,18 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    toast.promise(
+      new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      }),
+      {
+        loading: 'Sending message...',
+        success: 'Message sent successfully.',
+        error: 'Failed to send message.',
+      }
+    );
     let data = {
       name,
       email,
@@ -23,7 +36,6 @@ export default function Home() {
         body: JSON.stringify(data)
       })
       if (response.ok) {
-        console.log('Response succeeded!')
         setName('')
         setEmail('')
         setMessage('')
@@ -36,6 +48,24 @@ export default function Home() {
   return (
     <>
       <div className={styles.container}>
+        <Toaster
+          position="top-right"
+          gutter={8}
+          toastOptions={{
+            duration: 5000,
+            style: {
+              background: '#363636',
+              color: '#fff',
+            },
+            success: {
+              duration: 3000,
+              theme: {
+                primary: 'green',
+                secondary: 'black',
+              },
+            },
+          }}
+        />
         <form className={styles.main}>
           <h2>Contact form</h2>
           <div className={styles.inputGroup}>
